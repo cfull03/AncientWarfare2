@@ -1,4 +1,4 @@
-package net.shadowmage.ancientwarfare.npc.util;
+package net.shadowmage.ancientwarfare.npc.utils;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -10,7 +10,7 @@ public class TownHallLocator {
 
     // Scans within a cubic radius around center for a valid Town Hall block
     public static BlockPos findNearestTownHall(World world, BlockPos center, int radius) {
-        Block targetBlock = AWNPCBlocks.townHall; // Replace with your actual block ref
+        Block targetBlock = AWNPCBlocks.TOWN_HALL; // Replace with your actual block ref
 
         int cx = center.getX();
         int cy = center.getY();

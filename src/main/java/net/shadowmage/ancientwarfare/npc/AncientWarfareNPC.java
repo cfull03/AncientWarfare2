@@ -21,27 +21,12 @@ import net.shadowmage.ancientwarfare.core.gamedata.WorldData;
 import net.shadowmage.ancientwarfare.core.network.NetworkHandler;
 import net.shadowmage.ancientwarfare.core.network.PacketBase;
 import net.shadowmage.ancientwarfare.core.registry.RegistryLoader;
-import net.shadowmage.ancientwarfare.npc.command.CommandDebugAI;
-import net.shadowmage.ancientwarfare.npc.command.CommandFaction;
-import net.shadowmage.ancientwarfare.npc.command.CommandReinforce;
-import net.shadowmage.ancientwarfare.npc.command.CommandTeams;
+import net.shadowmage.ancientwarfare.npc.command.*;
 import net.shadowmage.ancientwarfare.npc.compat.EpicSiegeCompat;
 import net.shadowmage.ancientwarfare.npc.compat.TwilightForestCompat;
 import net.shadowmage.ancientwarfare.npc.compat.ebwizardry.EBWizardryCompat;
 import net.shadowmage.ancientwarfare.npc.config.AWNPCStatics;
-import net.shadowmage.ancientwarfare.npc.container.ContainerCombatOrder;
-import net.shadowmage.ancientwarfare.npc.container.ContainerNpcBard;
-import net.shadowmage.ancientwarfare.npc.container.ContainerNpcCreativeControls;
-import net.shadowmage.ancientwarfare.npc.container.ContainerNpcFactionBard;
-import net.shadowmage.ancientwarfare.npc.container.ContainerNpcFactionSpellcasterWizardry;
-import net.shadowmage.ancientwarfare.npc.container.ContainerNpcFactionTradeSetup;
-import net.shadowmage.ancientwarfare.npc.container.ContainerNpcFactionTradeView;
-import net.shadowmage.ancientwarfare.npc.container.ContainerNpcInventory;
-import net.shadowmage.ancientwarfare.npc.container.ContainerNpcPlayerOwnedTrade;
-import net.shadowmage.ancientwarfare.npc.container.ContainerRoutingOrder;
-import net.shadowmage.ancientwarfare.npc.container.ContainerTownHall;
-import net.shadowmage.ancientwarfare.npc.container.ContainerUpkeepOrder;
-import net.shadowmage.ancientwarfare.npc.container.ContainerWorkOrder;
+import net.shadowmage.ancientwarfare.npc.container.*;
 import net.shadowmage.ancientwarfare.npc.raid.CommandStartRaid;
 import net.shadowmage.ancientwarfare.npc.raid.RaidManager;
 import net.shadowmage.ancientwarfare.npc.raid.reinforcements.ReinforcementReturnHandler;
@@ -61,6 +46,7 @@ import net.shadowmage.ancientwarfare.npc.registry.FactionRegistry;
 import net.shadowmage.ancientwarfare.npc.registry.FactionTradeListRegistry;
 import net.shadowmage.ancientwarfare.npc.registry.NpcDefaultsRegistry;
 import net.shadowmage.ancientwarfare.npc.registry.TargetRegistry;
+import net.shadowmage.ancientwarfare.npc.trade.TradeCaravanEventHandler;
 import net.shadowmage.ancientwarfare.structure.network.PacketStructureEntry;
 import net.shadowmage.ancientwarfare.npc.raid.reinforcements.ReinforcementManager;
 import org.apache.logging.log4j.LogManager;
@@ -94,7 +80,6 @@ public class AncientWarfareNPC {
 
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.EVENT_BUS.register(net.shadowmage.ancientwarfare.npc.event.EventHandler.INSTANCE);
-        MinecraftForge.EVENT_BUS.register(new NPCTickManager());
         MinecraftForge.EVENT_BUS.register(new ReinforcementReturnHandler());
         MinecraftForge.EVENT_BUS.register(new RaidManager());
         MinecraftForge.EVENT_BUS.register(new TradeCaravanEventHandler());
@@ -113,7 +98,6 @@ public class AncientWarfareNPC {
 		NetworkHandler.registerContainer(NetworkHandler.GUI_NPC_TRADE_ORDER, ContainerTradeOrder.class);
 		NetworkHandler.registerContainer(NetworkHandler.GUI_NPC_PLAYER_OWNED_TRADE, ContainerNpcPlayerOwnedTrade.class);
 		NetworkHandler.registerContainer(NetworkHandler.GUI_NPC_FACTION_BARD, ContainerNpcFactionBard.class);
-        NetworkHandler.registerContainer(NetworkHandler.GUI_TRADE_DEAL_ORDER, ContainerTradeDealOrder.class);
 
 
 
